@@ -1,14 +1,21 @@
+import os
 from pathlib import Path
+
+from django.core.management.utils import get_random_secret_key
+from dotenv import load_dotenv
+
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+SECRET_KEY = os.getenv('SECRET_KEY', get_random_secret_key())
+# SECRET_KEY = 'django-insecure-o78r3to*^z6s74=1&ie^8qu&#43sojs+s43iq*90e=x37&abxt'
 
+# DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-SECRET_KEY = 'django-insecure-o78r3to*^z6s74=1&ie^8qu&#43sojs+s43iq*90e=x37&abxt'
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1').split(',')
 
 DEBUG = True
-
-ALLOWED_HOSTS = []
 
 
 INSTALLED_APPS = [
@@ -77,9 +84,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-RU'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
